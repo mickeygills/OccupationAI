@@ -1,7 +1,5 @@
-import dash
-from dash import dcc, html
+from dash import Dash, dcc, html,Input, Output
 import plotly.express as px
-from dash.dependencies import Input, Output
 import dash_table
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -17,7 +15,7 @@ df['Augmentation Percent'] = df['Augmentation Percent'].str.replace('%', '').ast
 df['Productivity Increase'] = df['Productivity Increase'].str.replace('%', '').astype(float)
 
 # Initialize the Dash app
-app = dash.Dash(__name__,external_stylesheets=[dbc.themes.SANDSTONE] )
+app = Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE] )
 
 app.layout = html.Div(children=[
     html.Br(),
@@ -140,7 +138,7 @@ def update_task_dropdown_and_occupation_table(selected_occupation):
 # Callback for updating the task details based on the selected task
 @app.callback(
     Output('task-details', 'children'),
-    [Input('task-dropdown', 'value')]
+    Input('task-dropdown', 'value')
 )
 def update_task_details(selected_task):
     if selected_task:
