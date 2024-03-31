@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 
 # Load and prepare the data
-df_occupation = pd.read_csv('csvFile.csv')
+df_occupation = pd.read_csv('csvFile.csv') # new note
 df = pd.read_csv('OccupationStats.csv')
 df['Employment'] = df['Employment'].str.replace(',', '').astype(int)
 df['Mean Income'] = df['Mean Income'].str.replace(',', '').astype(int)
